@@ -8,5 +8,17 @@ export const Container = styled.View`
     background-color: ${colors.white};
 `;
 
+export const SmallText = styled.Text`
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+`;
+
+export const BigText = styled.Text`
+  font-size: 30px;
+  color: white;
+  font-weight: 500;
+`;
+
 export const ScreenWidth = Dimensions.get("screen").width;
 export const ScreenHeight = Dimensions.get("screen").height;

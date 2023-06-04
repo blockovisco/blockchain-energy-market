@@ -5,10 +5,11 @@ import BuyScreen from '../screens/BuyScreen';
 import SellScreen from '../screens/SellScreen';
 import { useNavigation } from "@react-navigation/native"
 import { Icon } from '@rneui/themed';
+import { colors } from '../components/colors';
 
 export type TabStackParamList = {
-  Buy: undefined;
-  Sell: undefined;
+  BuyScreen: undefined;
+  SellScreen: undefined;
 }
 
 const Tab = createBottomTabNavigator<TabStackParamList>();
@@ -25,28 +26,28 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator screenOptions={({route}) => ({
       tabBarIcon: ({ focused, color, size}) => {
-        if ( route.name === 'Buy'){
+        if ( route.name === 'BuyScreen'){
           return (
             <Icon
             name='shopping-cart'
             type='FontAwesome5'
-            color={focused ? '#517fa4' : "gray"}
+            color={focused ? colors.secondary : "gray"}
           />
           );
-        } else if (route.name === 'Sell'){
+        } else if (route.name === 'SellScreen'){
           return (
             <Icon
             name='attach-money'
             type='MaterialIcons'
-            color={focused ? '#517fa4' : "gray"}
+            color={focused ? colors.secondary : "gray"}
           />
           );
         }
       },
     })}
     >
-      <Tab.Screen name="Buy" component={BuyScreen}/>
-      <Tab.Screen name="Sell" component={SellScreen}/>
+      <Tab.Screen name="BuyScreen" component={BuyScreen}/>
+      <Tab.Screen name="SellScreen" component={SellScreen}/>
     </Tab.Navigator>
   )
 }

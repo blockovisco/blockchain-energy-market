@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar"
 import styled from "styled-components/native"
 import { Container } from "../components/shared";
 import { colors } from "../components/colors";
+
 const HomeContainer = styled(Container)`
     background-color: ${colors.secondary};
 `;
