@@ -8,11 +8,6 @@ import { colors } from '../components/colors';
 import { Button } from '@rneui/themed';
 import { SmallText, BigText } from '../components/shared';
 
-const BuyContainer = styled(Container)`
-    background-color: ${colors.secondary};
-    color: 'white'
-`;
-
 const BuyScreen = () => {
   const navigation = useNavigation();
 
@@ -23,7 +18,7 @@ const BuyScreen = () => {
   }, []);
 
   return (
-    <BuyContainer>
+    <Container>
       <SafeAreaView>
           <BigText>Buy energy</BigText>
           <View>
@@ -51,7 +46,7 @@ const BuyScreen = () => {
                 }}/>
           </View>
       </SafeAreaView>
-    </BuyContainer>
+    </Container>
   )
 }
 

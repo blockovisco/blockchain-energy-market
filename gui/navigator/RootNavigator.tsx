@@ -5,6 +5,7 @@ import TabNavigator from './TabNavigator';
 import ShowBuyOffers from '../screens/ShowBuyOffers';
 import CreateBuyOffer from '../screens/CreateBuyOffer';
 import ShowSellOffers from '../screens/ShowSellOffers';
+import CreateSellOffer from '../screens/CreateSellOffer';
 
 export type RootStackParamList = {
     Main: undefined;
@@ -28,7 +29,7 @@ const RootNavigator = () => {
         </RootStack.Group>
         <RootStack.Group>
             <RootStack.Screen name="ShowBuy" component={ShowBuyOffers}/>
-            <RootStack.Screen name="CreateSell" component={CreateBuyOffer}/>
+            <RootStack.Screen name="CreateSell" component={CreateSellOffer}/>
         </RootStack.Group>
     </RootStack.Navigator>
   )

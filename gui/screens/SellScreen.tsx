@@ -21,7 +21,7 @@ const SellScreen = () => {
   }, []);
 
   return (
-    <BuyContainer>
+    <Container>
       <SafeAreaView>
         <BigText>Sell energy</BigText>
             <View>
@@ -49,7 +49,7 @@ const SellScreen = () => {
                   }}/>
             </View>
         </SafeAreaView>
-    </BuyContainer>
+    </Container>
   )
 }
 
