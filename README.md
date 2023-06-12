@@ -31,7 +31,7 @@ be running on your mobile device.
 1. Start your Virtual Device 
 2. Go to gui folder and run command below
 ```cmd
-> npm start
+> npx expo start
 ```
 3. Press `a`
 4. The app should appear on your VD
