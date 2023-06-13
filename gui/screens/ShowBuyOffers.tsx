@@ -8,7 +8,7 @@ import { StyleSheet } from 'react-native'
 const ShowBuyOffers = () => {
   const data = listAllOffers();
   
-  const renderItem = ({ item }) => {
+  const renderItem = ({item}) => {
     return (
       <View style={styles.offerList}>
         <Text style={styles.offerListElement}>Amount: {item.Amount}</Text>
