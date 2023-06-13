@@ -39,7 +39,7 @@ const CreateBuyOffer = () => {
                 borderWidth: 0,
                 borderRadius: 30,
                 }}
-              onPress={() => createBuyOffer(energyToBuy, energyPrice)}/>
+              onPress={async () => await createBuyOffer(energyToBuy, energyPrice)}/>
           </View>
       </SafeAreaView>
     </Container>
