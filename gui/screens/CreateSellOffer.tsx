@@ -1,10 +1,11 @@
-import { View, Text } from 'react-native'
+import {View, Text, StyleSheet} from 'react-native'
 import React, {useState} from 'react'
 import { Container, SmallText } from '../components/shared'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Button, Input } from '@rneui/themed'
 import { colors } from '../components/colors'
-import {createBuyOffer, createSellOffer} from "../requests/createRequests";
+import {createSellOffer} from "../requests/createRequests";
+import {createOfferStyle} from "../styles/styles";
 
 const CreateSellOffer = () => {
     const [energyToSell, setEnergyToSell] = useState('')
@@ -23,23 +24,19 @@ const CreateSellOffer = () => {
           <SafeAreaView>
               <View>
                 <SmallText>Amount of energy to sell:</SmallText>
-                <Input id="energySellInput" onChangeText={handleAmountChange} value={energyToSell}></Input>
+                <Input id="energySellInput" onChangeText={handleAmountChange} value={energyToSell} style={createOfferStyle.inputText}></Input>
               </View>
               <View>
                 <SmallText>Price for 1 unit of energy:</SmallText>
-                <Input id="energyPriceInput" onChangeText={handlePriceChange} value={energyPrice}></Input>
+                <Input id="energyPriceInput" onChangeText={handlePriceChange} value={energyPrice} style={createOfferStyle.inputText}></Input>
               </View>
               <View>
                 <Button
                   size = "lg"
                   title="Confirm"
-                  titleStyle={{color: colors.secondary}}
+                  titleStyle={createOfferStyle.titleStyle}
                   onPress={async () => await createSellOffer(energyToSell, energyPrice)}
-                  buttonStyle={{
-                    backgroundColor: 'white',
-                    borderWidth: 0,
-                    borderRadius: 30,
-                    }}/>
+                  buttonStyle={createOfferStyle.buttonStyle}/>
 
               </View>
           </SafeAreaView>

@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { Button, Input } from '@rneui/themed'
 import { colors } from '../components/colors'
 import { createBuyOffer } from '../requests/createRequests'
+import {createOfferStyle} from "../styles/styles";
 
 const CreateBuyOffer = () => {
   const [energyToBuy, setEnergyToBuy] = useState('')
@@ -23,22 +24,18 @@ const CreateBuyOffer = () => {
       <SafeAreaView>
           <View>
             <SmallText>Amount of energy to buy:</SmallText>
-            <Input id="energyBuyInput" onChangeText={handleAmountChange} value={energyToBuy}></Input>
+            <Input id="energyBuyInput" onChangeText={handleAmountChange} value={energyToBuy} style={createOfferStyle.inputText}></Input>
           </View>
           <View>
             <SmallText>Price for 1 unit of energy:</SmallText>
-            <Input id="energyPriceInput" onChangeText={handlePriceChange} value={energyPrice}></Input>
+            <Input id="energyPriceInput" onChangeText={handlePriceChange} value={energyPrice} style={createOfferStyle.inputText}></Input>
           </View>
           <View>
             <Button
               size = "lg"
               title="Confirm"
-              titleStyle={{color: colors.secondary}}
-              buttonStyle={{
-                backgroundColor: 'white',
-                borderWidth: 0,
-                borderRadius: 30,
-                }}
+              titleStyle={createOfferStyle.titleStyle}
+              buttonStyle={createOfferStyle.buttonStyle}
               onPress={async () => await createBuyOffer(energyToBuy, energyPrice)}/>
           </View>
       </SafeAreaView>

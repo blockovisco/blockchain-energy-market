@@ -1,26 +1,24 @@
 import { View, Text, FlatList } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { listAllOffers } from '../requests/fetchRequests'
-import { Offer } from '../domain/offer'
-import { apiIP } from '../requests/config'
-import { StyleSheet } from 'react-native'
+import {listOffersStyle} from "../styles/styles";
 
 const ShowBuyOffers = () => {
   const data = listAllOffers();
   
   const renderItem = ({item}) => {
     return (
-      <View style={styles.offerList}>
-        <Text style={styles.offerListElement}>Amount: {item.Amount}</Text>
-        <Text style={styles.offerListElement}>Price: {item.Price}</Text>
-        <Text style={styles.offerListElement}>Offerer: {item.Offerer}</Text>
+      <View style={listOffersStyle.offerList}>
+        <Text style={listOffersStyle.offerListElement}>Amount: {item.Amount}</Text>
+        <Text style={listOffersStyle.offerListElement}>Price: {item.Price}</Text>
+        <Text style={listOffersStyle.offerListElement}>Offerer: {item.Offerer}</Text>
       </View>
     );
   };
 
   return (
     <FlatList
-      style={styles.offerFlatList}
+      style={listOffersStyle.offerFlatList}
       data={data}
       renderItem={renderItem}
       keyExtractor={(item) => item.ID}
@@ -28,18 +26,5 @@ const ShowBuyOffers = () => {
   );
   
 }
-
-const styles = StyleSheet.create({
-  offerList: {
-    padding: 10,
-  },
-  offerListElement: {
-    fontSize: 20,
-    color: "white"
-  },
-  offerFlatList: {
-    backgroundColor: "#091238"
-  }
-});
 
 export default ShowBuyOffers
