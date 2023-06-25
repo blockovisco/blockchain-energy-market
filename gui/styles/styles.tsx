@@ -18,12 +18,17 @@ export const createOfferStyle = StyleSheet.create({
 export const listOffersStyle = StyleSheet.create({
     offerList: {
         padding: 10,
+        backgroundColor: 'white',
+        borderRadius: 10,
+        margin: 10
     },
     offerListElement: {
         fontSize: 20,
-        color: "white"
+        color: colors.secondary,
+        paddingLeft: 10,
+        
     },
     offerFlatList: {
-        backgroundColor: "#091238"
+        backgroundColor: colors.secondary
     }
 });

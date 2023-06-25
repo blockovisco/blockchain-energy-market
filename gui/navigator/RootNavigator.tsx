@@ -6,6 +6,8 @@ import ShowBuyOffers from '../screens/ShowBuyOffers';
 import CreateBuyOffer from '../screens/CreateBuyOffer';
 import ShowSellOffers from '../screens/ShowSellOffers';
 import CreateSellOffer from '../screens/CreateSellOffer';
+import { Offer } from '../domain/offer';
+import SellOffer from '../screens/SellOffer';
 
 export type RootStackParamList = {
     Main: undefined;
@@ -13,6 +15,7 @@ export type RootStackParamList = {
     CreateBuy: undefined;
     ShowSell: undefined;
     CreateSell: undefined;
+    ShowSellOffer: {offer: Offer};
 }
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -30,6 +33,11 @@ const RootNavigator = () => {
         <RootStack.Group>
             <RootStack.Screen name="ShowBuy" component={ShowBuyOffers}/>
             <RootStack.Screen name="CreateSell" component={CreateSellOffer}/>
+        </RootStack.Group>
+        <RootStack.Group screenOptions={{
+            presentation: "modal",
+        }}>
+            <RootStack.Screen options={{headerShown: true}} name="ShowSellOffer" component={SellOffer}/>
         </RootStack.Group>
     </RootStack.Navigator>
   )

@@ -21,26 +21,26 @@ const CreateSellOffer = () => {
 
   return (
     <Container>
-          <SafeAreaView>
-              <View>
-                <SmallText>Amount of energy to sell:</SmallText>
-                <Input id="energySellInput" onChangeText={handleAmountChange} value={energyToSell} style={createOfferStyle.inputText}></Input>
-              </View>
-              <View>
-                <SmallText>Price for 1 unit of energy:</SmallText>
-                <Input id="energyPriceInput" onChangeText={handlePriceChange} value={energyPrice} style={createOfferStyle.inputText}></Input>
-              </View>
-              <View>
-                <Button
-                  size = "lg"
-                  title="Confirm"
-                  titleStyle={createOfferStyle.titleStyle}
-                  onPress={async () => await createSellOffer(energyToSell, energyPrice)}
-                  buttonStyle={createOfferStyle.buttonStyle}/>
+      <SafeAreaView>
+          <View>
+            <SmallText>Amount of energy to sell:</SmallText>
+            <Input id="energySellInput" onChangeText={handleAmountChange} value={energyToSell} style={createOfferStyle.inputText}></Input>
+          </View>
+          <View>
+            <SmallText>Price for 1 unit of energy:</SmallText>
+            <Input id="energyPriceInput" onChangeText={handlePriceChange} value={energyPrice} style={createOfferStyle.inputText}></Input>
+          </View>
+          <View>
+            <Button
+              size = "lg"
+              title="Confirm"
+              titleStyle={createOfferStyle.titleStyle}
+              onPress={async () => await createSellOffer(energyToSell, energyPrice)}
+              buttonStyle={createOfferStyle.buttonStyle}/>
 
-              </View>
-          </SafeAreaView>
-        </Container>
+          </View>
+      </SafeAreaView>
+    </Container>
   )
 }
 

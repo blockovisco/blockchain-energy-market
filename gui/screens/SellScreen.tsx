@@ -1,18 +1,21 @@
 import { View, Text } from 'react-native'
 import React, { useLayoutEffect } from 'react'
-import { useNavigation } from '@react-navigation/native';
+import { CompositeNavigationProp, useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BigText, Container, SmallText } from '../components/shared';
 import { colors } from '../components/colors';
 import styled from 'styled-components/native';
 import { Button } from '@rneui/themed';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { TabStackParamList } from '../navigator/TabNavigator';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigator/RootNavigator';
 
-const BuyContainer = styled(Container)`
-    background-color: ${colors.secondary};
-`;
+export type SellScreenNavigationProp = CompositeNavigationProp<BottomTabNavigationProp<TabStackParamList, 
+  'SellScreen'>, NativeStackNavigationProp<RootStackParamList>>
 
 const SellScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<SellScreenNavigationProp>();
 
   useLayoutEffect(() => {
     navigation.setOptions({
