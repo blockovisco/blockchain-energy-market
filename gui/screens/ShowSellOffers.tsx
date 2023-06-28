@@ -18,9 +18,10 @@ const ShowSellOffers = () => {
   const renderItem = ({item}:{item:Offer}) => {
     return (
       <TouchableOpacity style={listOffersStyle.offerList} onPress={() => navigation.navigate('ShowSellOffer', {offer: item})}>
-        <Text style={listOffersStyle.offerListElement}>Amount: {item.Amount}</Text>
+        <Text style={listOffersStyle.offerListElement}>Amount: {item.maxAmount}</Text>
         <Text style={listOffersStyle.offerListElement}>Price: {item.Price}</Text>
         <Text style={listOffersStyle.offerListElement}>Offerer: {item.Offerer}</Text>
+        <Text style={listOffersStyle.offerListElement}>Effective Date: {item.effectiveDate}</Text>
       </TouchableOpacity>
     );
   };

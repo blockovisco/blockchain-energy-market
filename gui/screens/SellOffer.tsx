@@ -6,6 +6,7 @@ import { BigText, Container } from '../components/shared'
 import { Button } from '@rneui/themed'
 import { createOfferStyle } from '../styles/styles'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import {signContract} from "../requests/contracts";
 
 type SellOfferRouteProp = RouteProp<RootStackParamList, 'ShowSellOffer'>
 const SellOffer = () => {
@@ -18,7 +19,8 @@ const SellOffer = () => {
           <BigText>Name: {offer.Name}</BigText>
           <BigText>Offerer: {offer.Offerer}</BigText>
           <BigText>Price: {offer.Price}</BigText>
-          <BigText>Amount: {offer.Amount}</BigText>
+          <BigText>Amount: {offer.maxAmount}</BigText>
+            <BigText>EffectiveDate: {offer.effectiveDate}</BigText>
         </View>
         <View>
           <Button
@@ -26,8 +28,8 @@ const SellOffer = () => {
             title="Confirm"
             titleStyle={createOfferStyle.titleStyle}
             buttonStyle={createOfferStyle.buttonStyle}
-            onPress={() => {Alert.alert("Confirmation", "Are you sure?", [
-              {text: "Yes", onPress: () => {}, style: 'default'},
+            onPress={() => {Alert.alert("Confirmation", "Are you sure?" + offer.ID, [
+              {text: "Yes", onPress: async () => {await signContract(offer.ID)}, style: 'default'},
               {text: "No", onPress: () => {}, style: 'cancel'}
           ])}}/>
         </View>

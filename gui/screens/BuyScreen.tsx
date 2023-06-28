@@ -52,6 +52,18 @@ const BuyScreen = () => {
                 borderRadius: 30,
                 }}/>
           </View>
+          <View>
+              <SmallText>Show your contracts</SmallText>
+              <Button onPress={() => navigation.navigate('ShowPeerContracts')}
+                      size = "lg"
+                      title="Show contracts"
+                      titleStyle={{color: colors.secondary}}
+                      buttonStyle={{
+                          backgroundColor: 'white',
+                          borderWidth: 0,
+                          borderRadius: 30,
+                      }}/>
+          </View>
       </SafeAreaView>
     </Container>
   )
