@@ -10,14 +10,18 @@ export const Container = styled.View`
 
 export const SmallText = styled.Text`
   font-size: 18px;
+  marginHorizontal: 15px;
+  marginBottom: 10px;
   color: white;
   font-weight: 500;
 `;
 
 export const BigText = styled.Text`
   font-size: 30px;
+  marginBottom:20px;
   color: white;
   font-weight: 500;
+  textAlign: center;
 `;
 
 export const ScreenWidth = Dimensions.get("screen").width;

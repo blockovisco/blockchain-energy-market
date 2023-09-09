@@ -2,13 +2,13 @@ import { View, Text, RootTagContext } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TabNavigator from './TabNavigator';
-import ShowBuyOffers from '../screens/ShowBuyOffers';
-import CreateBuyOffer from '../screens/CreateBuyOffer';
-import ShowSellOffers from '../screens/ShowSellOffers';
-import CreateSellOffer from '../screens/CreateSellOffer';
+import ShowBuyOffers from '../screens/sell_screens/ShowBuyOffers';
+import CreateBuyOffer from '../screens/buy_screens/CreateBuyOffer';
+import ShowSellOffers from '../screens/buy_screens/ShowSellOffers';
+import CreateSellOffer from '../screens/sell_screens/CreateSellOffer';
 import { Offer } from '../domain/offer';
-import SellOffer from '../screens/SellOffer';
-import ShowPeerContracts from "../screens/ShowPeerContracts";
+import SellOffer from '../screens/buy_screens/SellOffer';
+import ShowPeerContracts from "../screens/buy_screens/ShowPeerContracts";
 
 export type RootStackParamList = {
     Main: undefined;

@@ -5,9 +5,11 @@ import BuyScreen from '../screens/BuyScreen';
 import SellScreen from '../screens/SellScreen';
 import { useNavigation } from "@react-navigation/native"
 import { Icon } from '@rneui/themed';
-import { colors } from '../components/colors';
+import { colors } from '../shared/colors';
+import Home from '../screens/Home';
 
 export type TabStackParamList = {
+  Home: undefined;
   BuyScreen: undefined;
   SellScreen: undefined;
 }
@@ -26,7 +28,15 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator screenOptions={({route}) => ({
       tabBarIcon: ({ focused, color, size}) => {
-        if ( route.name === 'BuyScreen'){
+        if ( route.name === 'Home'){
+          return (
+            <Icon
+            name='home'
+            type='FontAwesome5'
+            color={focused ? colors.secondary : "gray"}
+          />
+          );
+        } else if (route.name === 'BuyScreen'){
           return (
             <Icon
             name='shopping-cart'
@@ -46,6 +56,7 @@ const TabNavigator = () => {
       },
     })}
     >
+      <Tab.Screen options={{headerShown: false}} name="Home" component={Home}/>
       <Tab.Screen name="BuyScreen" component={BuyScreen}/>
       <Tab.Screen name="SellScreen" component={SellScreen}/>
     </Tab.Navigator>

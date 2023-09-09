@@ -3,10 +3,10 @@ import React, { useLayoutEffect } from 'react'
 import { CompositeNavigationProp, useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
-import { Container } from '../components/shared';
-import { colors } from '../components/colors';
+import { Container } from '../shared/shared';
+import { colors } from '../shared/colors';
 import { Button } from '@rneui/themed';
-import { SmallText, BigText } from '../components/shared';
+import { SmallText, BigText } from '../shared/shared';
 import { TabStackParamList } from '../navigator/TabNavigator';
 import { RootStackParamList } from '../navigator/RootNavigator';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';

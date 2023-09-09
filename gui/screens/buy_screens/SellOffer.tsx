@@ -1,12 +1,12 @@
 import { View, Text, Alert } from 'react-native'
 import React from 'react'
 import { RouteProp, useRoute } from '@react-navigation/native'
-import { RootStackParamList } from '../navigator/RootNavigator'
-import { BigText, Container } from '../components/shared'
+import { RootStackParamList } from '../../navigator/RootNavigator'
+import { BigText, Container } from '../../shared/shared'
 import { Button } from '@rneui/themed'
-import { createOfferStyle } from '../styles/styles'
+import { createOfferStyle } from '../../shared/styles'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import {signContract} from "../requests/contracts";
+import {signContract} from "../../requests/contracts";
 
 type SellOfferRouteProp = RouteProp<RootStackParamList, 'ShowSellOffer'>
 const SellOffer = () => {

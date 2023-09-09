@@ -1,11 +1,11 @@
 import { View, Text, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native'
 import React, { useState } from 'react'
-import { Container, SmallText } from '../components/shared'
+import { Container, SmallText } from '../../shared/shared'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Button, Input } from '@rneui/themed'
-import { colors } from '../components/colors'
-import { createBuyOffer } from '../requests/createRequests'
-import {createOfferStyle} from "../styles/styles";
+import { colors } from '../../shared/colors'
+import { createBuyOffer } from '../../requests/createRequests'
+import {createOfferStyle} from "../../shared/styles";
 
 const CreateBuyOffer = () => {
   const [energyToBuy, setEnergyToBuy] = useState('')
