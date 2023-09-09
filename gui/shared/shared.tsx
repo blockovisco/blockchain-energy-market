@@ -6,6 +6,7 @@ export const Container = styled.View`
     flex: 1;
     align-items: center;
     background-color: ${colors.secondary};
+    justifyContent: center;
 `;
 
 export const SmallText = styled.Text`

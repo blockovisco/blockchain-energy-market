@@ -20,14 +20,22 @@ const BuyScreen = () => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerShown: false,
+      headerShown: true,
+      title: "Buy energy",
+      headerStyle: {
+        backgroundColor: colors.secondary,
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 30,
+      },
     });
   }, []);
 
   return (
     <Container>
       <SafeAreaView>
-          <BigText>Buy energy</BigText>
           <View>
             <SmallText>Show available sell offers</SmallText>
             <Button onPress={() => navigation.navigate('ShowSell')}

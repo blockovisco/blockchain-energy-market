@@ -33,7 +33,7 @@ const TabNavigator = () => {
             <Icon
             name='home'
             type='FontAwesome5'
-            color={focused ? colors.secondary : "gray"}
+            color={focused ? colors.white : "gray"}
           />
           );
         } else if (route.name === 'BuyScreen'){
@@ -41,7 +41,7 @@ const TabNavigator = () => {
             <Icon
             name='shopping-cart'
             type='FontAwesome5'
-            color={focused ? colors.secondary : "gray"}
+            color={focused ? colors.white : "gray"}
           />
           );
         } else if (route.name === 'SellScreen'){
@@ -49,14 +49,27 @@ const TabNavigator = () => {
             <Icon
             name='attach-money'
             type='MaterialIcons'
-            color={focused ? colors.secondary : "gray"}
+            color={focused ? colors.white : "gray"}
           />
           );
         }
       },
+      tabBarShowLabel: false,
+      tabBarStyle: { backgroundColor: colors.secondary }
     })}
     >
-      <Tab.Screen options={{headerShown: false}} name="Home" component={Home}/>
+      <Tab.Screen options={{
+        headerShown: true,
+        title: "Blockchain Energy Market",
+        headerStyle: {
+          backgroundColor: colors.secondary,
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          fontSize: 30,
+        },
+      }} name="Home" component={Home}/>
       <Tab.Screen name="BuyScreen" component={BuyScreen}/>
       <Tab.Screen name="SellScreen" component={SellScreen}/>
     </Tab.Navigator>
