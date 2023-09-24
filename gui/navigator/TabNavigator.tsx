@@ -34,6 +34,7 @@ const TabNavigator = () => {
             name='home'
             type='FontAwesome5'
             color={focused ? colors.white : "gray"}
+            size={35}
           />
           );
         } else if (route.name === 'BuyScreen'){
@@ -42,6 +43,7 @@ const TabNavigator = () => {
             name='shopping-cart'
             type='FontAwesome5'
             color={focused ? colors.white : "gray"}
+            size={35}
           />
           );
         } else if (route.name === 'SellScreen'){
@@ -50,24 +52,33 @@ const TabNavigator = () => {
             name='attach-money'
             type='MaterialIcons'
             color={focused ? colors.white : "gray"}
+            size={35}
           />
           );
         }
       },
       tabBarShowLabel: false,
-      tabBarStyle: { backgroundColor: colors.secondary }
+      tabBarStyle: { 
+        backgroundColor: colors.secondary,
+        borderTopWidth: 5, 
+        borderTopColor: colors.primary
+      }
     })}
     >
       <Tab.Screen options={{
         headerShown: true,
-        title: "Blockchain Energy Market",
+        title: "BLOCKOVISCO",
+        headerTitleAlign: 'center',
         headerStyle: {
           backgroundColor: colors.secondary,
+          borderBottomWidth: 5,
+          borderBottomColor: colors.primary,
+          height: 120
         },
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
-          fontSize: 30,
+          fontSize: 40,
         },
       }} name="Home" component={Home}/>
       <Tab.Screen name="BuyScreen" component={BuyScreen}/>
