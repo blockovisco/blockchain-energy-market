@@ -1,11 +1,11 @@
 import {View, Text, StyleSheet} from 'react-native'
 import React, {useState} from 'react'
-import { Container, SmallText } from '../components/shared'
+import { Container, SmallText } from '../../shared/shared'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Button, Input } from '@rneui/themed'
-import { colors } from '../components/colors'
-import {createSellOffer} from "../requests/createRequests";
-import {createOfferStyle} from "../styles/styles";
+import { colors } from '../../shared/colors'
+import {createSellOffer} from "../../requests/createRequests";
+import {createOfferStyle} from "../../shared/styles";
 
 const CreateSellOffer = () => {
     const [energyToSell, setEnergyToSell] = useState('')

@@ -3,10 +3,10 @@ import React, { useLayoutEffect } from 'react'
 import { CompositeNavigationProp, useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
-import { Container } from '../components/shared';
-import { colors } from '../components/colors';
+import { Container } from '../shared/shared';
+import { colors } from '../shared/colors';
 import { Button } from '@rneui/themed';
-import { SmallText, BigText } from '../components/shared';
+import { SmallText, BigText } from '../shared/shared';
 import { TabStackParamList } from '../navigator/TabNavigator';
 import { RootStackParamList } from '../navigator/RootNavigator';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -20,14 +20,22 @@ const BuyScreen = () => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerShown: false,
+      headerShown: true,
+      title: "Buy energy",
+      headerStyle: {
+        backgroundColor: colors.secondary,
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 30,
+      },
     });
   }, []);
 
   return (
     <Container>
       <SafeAreaView>
-          <BigText>Buy energy</BigText>
           <View>
             <SmallText>Show available sell offers</SmallText>
             <Button onPress={() => navigation.navigate('ShowSell')}

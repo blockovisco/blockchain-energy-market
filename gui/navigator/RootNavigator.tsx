@@ -2,13 +2,13 @@ import { View, Text, RootTagContext } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TabNavigator from './TabNavigator';
-import ShowBuyOffers from '../screens/ShowBuyOffers';
-import CreateBuyOffer from '../screens/CreateBuyOffer';
-import ShowSellOffers from '../screens/ShowSellOffers';
-import CreateSellOffer from '../screens/CreateSellOffer';
+import ShowBuyOffers from '../screens/sell_screens/ShowBuyOffers';
+import CreateBuyOffer from '../screens/buy_screens/CreateBuyOffer';
+import ShowSellOffers from '../screens/buy_screens/ShowSellOffers';
+import CreateSellOffer from '../screens/sell_screens/CreateSellOffer';
 import { Offer } from '../domain/offer';
-import SellOffer from '../screens/SellOffer';
-import ShowPeerContracts from "../screens/ShowPeerContracts";
+import SellOffer from '../screens/buy_screens/SellOffer';
+import ShowPeerContracts from "../screens/buy_screens/ShowPeerContracts";
 
 export type RootStackParamList = {
     Main: undefined;
@@ -29,18 +29,18 @@ const RootNavigator = () => {
             <RootStack.Screen name="Main" component={TabNavigator}/>
         </RootStack.Group>
         <RootStack.Group>
-            <RootStack.Screen name="ShowSell" component={ShowSellOffers}/>
-            <RootStack.Screen name="CreateBuy" component={CreateBuyOffer}/>
-            <RootStack.Screen name="ShowPeerContracts" component={ShowPeerContracts}/>
+            <RootStack.Screen options={{headerShown: true, headerTitle: "Listing sell offers"}} name="ShowSell" component={ShowSellOffers}/>
+            <RootStack.Screen options={{headerShown: true, headerTitle: "Create buy offer"}}  name="CreateBuy" component={CreateBuyOffer}/>
+            <RootStack.Screen options={{headerShown: true, headerTitle: "Listing contracts"}} name="ShowPeerContracts" component={ShowPeerContracts}/>
         </RootStack.Group>
         <RootStack.Group>
-            <RootStack.Screen name="ShowBuy" component={ShowBuyOffers}/>
-            <RootStack.Screen name="CreateSell" component={CreateSellOffer}/>
+            <RootStack.Screen options={{headerShown: true, headerTitle: "Listing buy offers"}} name="ShowBuy" component={ShowBuyOffers}/>
+            <RootStack.Screen options={{headerShown: true, headerTitle: "Create sell offer"}} name="CreateSell" component={CreateSellOffer}/>
         </RootStack.Group>
         <RootStack.Group screenOptions={{
             presentation: "modal",
         }}>
-            <RootStack.Screen options={{headerShown: true}} name="ShowSellOffer" component={SellOffer}/>
+            <RootStack.Screen options={{headerShown: true, headerTitle: "Sell offer details"}} name="ShowSellOffer" component={SellOffer}/>
         </RootStack.Group>
     </RootStack.Navigator>
   )

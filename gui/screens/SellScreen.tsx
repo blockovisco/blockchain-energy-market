@@ -2,8 +2,8 @@ import { View, Text } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { CompositeNavigationProp, useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { BigText, Container, SmallText } from '../components/shared';
-import { colors } from '../components/colors';
+import { BigText, Container, SmallText } from '../shared/shared';
+import { colors } from '../shared/colors';
 import styled from 'styled-components/native';
 import { Button } from '@rneui/themed';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
@@ -19,14 +19,22 @@ const SellScreen = () => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerShown: false,
+      headerShown: true,
+      title: "Sell energy",
+      headerStyle: {
+        backgroundColor: colors.secondary,
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 30,
+      },
     });
   }, []);
 
   return (
     <Container>
       <SafeAreaView>
-        <BigText>Sell energy</BigText>
             <View>
               <SmallText>Show available buy offers</SmallText>
               <Button onPress={() => navigation.navigate('ShowBuy')}

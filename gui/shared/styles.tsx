@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {colors} from "../components/colors";
+import {colors} from "./colors";
 
 export const createOfferStyle = StyleSheet.create({
     inputText: {

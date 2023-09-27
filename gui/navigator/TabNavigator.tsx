@@ -5,9 +5,11 @@ import BuyScreen from '../screens/BuyScreen';
 import SellScreen from '../screens/SellScreen';
 import { useNavigation } from "@react-navigation/native"
 import { Icon } from '@rneui/themed';
-import { colors } from '../components/colors';
+import { colors } from '../shared/colors';
+import Home from '../screens/Home';
 
 export type TabStackParamList = {
+  Home: undefined;
   BuyScreen: undefined;
   SellScreen: undefined;
 }
@@ -26,12 +28,22 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator screenOptions={({route}) => ({
       tabBarIcon: ({ focused, color, size}) => {
-        if ( route.name === 'BuyScreen'){
+        if ( route.name === 'Home'){
+          return (
+            <Icon
+            name='home'
+            type='FontAwesome5'
+            color={focused ? colors.white : "gray"}
+            size={35}
+          />
+          );
+        } else if (route.name === 'BuyScreen'){
           return (
             <Icon
             name='shopping-cart'
             type='FontAwesome5'
-            color={focused ? colors.secondary : "gray"}
+            color={focused ? colors.white : "gray"}
+            size={35}
           />
           );
         } else if (route.name === 'SellScreen'){
@@ -39,13 +51,36 @@ const TabNavigator = () => {
             <Icon
             name='attach-money'
             type='MaterialIcons'
-            color={focused ? colors.secondary : "gray"}
+            color={focused ? colors.white : "gray"}
+            size={35}
           />
           );
         }
       },
+      tabBarShowLabel: false,
+      tabBarStyle: { 
+        backgroundColor: colors.secondary,
+        borderTopWidth: 5, 
+        borderTopColor: colors.primary
+      }
     })}
     >
+      <Tab.Screen options={{
+        headerShown: true,
+        title: "BLOCKOVISCO",
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: colors.secondary,
+          borderBottomWidth: 5,
+          borderBottomColor: colors.primary,
+          height: 120
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+          fontSize: 40,
+        },
+      }} name="Home" component={Home}/>
       <Tab.Screen name="BuyScreen" component={BuyScreen}/>
       <Tab.Screen name="SellScreen" component={SellScreen}/>
     </Tab.Navigator>

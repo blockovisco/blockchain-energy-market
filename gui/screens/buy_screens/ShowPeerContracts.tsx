@@ -1,8 +1,8 @@
 import {useNavigation} from "@react-navigation/native";
-import {listAllOffers, listAllPeerContracts} from "../requests/fetchRequests";
-import {Offer} from "../domain/offer";
+import {listAllOffers, listAllPeerContracts} from "../../requests/fetchRequests";
+import {Offer} from "../../domain/offer";
 import {FlatList, Text, TouchableOpacity} from "react-native";
-import {listOffersStyle} from "../styles/styles";
+import {listOffersStyle} from "../../shared/styles";
 import React from "react";
 import {ShowSellScreenNavigationProp} from "./ShowSellOffers";
 
