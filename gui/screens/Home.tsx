@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from "react"
+import React, {FunctionComponent, useEffect, useState} from "react"
 import { StatusBar } from "expo-status-bar"
 import styled from "styled-components/native"
 import { BigText, Container, SmallText } from "../shared/shared";
@@ -9,6 +9,7 @@ import Circle from "../shared/Circle";
 import { Text } from "@rneui/base";
 import { Icon } from '@rneui/themed';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {ApiRequests} from "../requests/ApiRequests";
 
 
 interface circleProps {
@@ -30,12 +31,29 @@ const Home = () => {
     const [date, setDate] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
 
+    // data
+
+    const [accountBalance, setAccountBalance] = useState(0.0)
+
     const onChange = (event: any, selectedDate: Date | undefined) => {
         setShowDatePicker(Platform.OS === 'ios');
         if (selectedDate) {
         setDate(selectedDate);
         }
     };
+
+    /* DATA FETCHING FUNCTIONS ------------------------------------------------------------*/
+
+    useEffect(() => {
+        getAccountBalance().then(r => r)
+    })
+
+    const getAccountBalance = async () => {
+        await ApiRequests.getAccountBalance().then((response) => {
+            let balance = response.data;
+            setAccountBalance(balance);
+        })
+    }
 
     return (
         <Container>
@@ -47,7 +65,7 @@ const Home = () => {
                         <Text style={textStyle({}).title}>Bilans</Text>
                         <Text style={textStyle({}).smallText}>Stan konta:</Text>
                         <View style={styles({size: sizeOfBigCircle*0.7, color: colors.primary}).roundedField}>
-                            <Text style={textStyle({color: colors.white}).colored}>235.4 B</Text>
+                            <Text style={textStyle({color: colors.white}).colored}> {accountBalance} </Text>
                         </View>
                         <Text style={textStyle({}).smallText}>Produkcja/ zużycie energii:</Text>
                         <View style={styles({size: sizeOfBigCircle*0.7, color: colors.primary}).roundedField}>
