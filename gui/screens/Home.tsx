@@ -56,6 +56,8 @@ const Home = () => {
         await ApiRequests.getAccountBalance().then((response) => {
             let balance = response.data;
             setAccountBalance(balance);
+        }).catch((e) => {
+            console.log(e)
         })
     }
 
@@ -66,6 +68,8 @@ const Home = () => {
                 console.log("Warning! Energy assets list length is not equal to 1! Fetched value is probably wrong")
             }
             setEnergyBalance(energyList[0].Amount);
+        }).catch((e) => {
+            console.log(e)
         })
     }
     /* END OF FETCHING FUNCTIONS */

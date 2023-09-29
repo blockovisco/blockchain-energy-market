@@ -1,15 +1,15 @@
 export class Offer {
 
-    constructor(id: string, name: string, price: number, maxAmount: number, offerer: string, effectiveDate: string) {
+    constructor(id: string, name: string, price: number, amount: number, offerer: string, effectiveDate: string) {
         this.ID = id;
         this.Name = name;
         this.Price = price;
-        this.maxAmount = maxAmount;
+        this.amount = amount;
         this.Offerer = offerer
         this.effectiveDate = effectiveDate;
     }
     
-    public maxAmount: number;
+    public amount: number;
     public effectiveDate: string;
     public ID: string;
     public Name: string;

@@ -19,8 +19,7 @@ const SellOffer = () => {
           <BigText>Name: {offer.Name}</BigText>
           <BigText>Offerer: {offer.Offerer}</BigText>
           <BigText>Price: {offer.Price}</BigText>
-          <BigText>Amount: {offer.maxAmount}</BigText>
-            <BigText>EffectiveDate: {offer.effectiveDate}</BigText>
+          <BigText>Amount: {offer.amount}</BigText>
         </View>
         <View>
           <Button

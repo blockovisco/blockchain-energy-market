@@ -1,27 +1,42 @@
 import { View, Text, TouchableOpacity, FlatList } from 'react-native'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { CompositeNavigationProp, useNavigation } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { TabStackParamList } from '../../navigator/TabNavigator';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigator/RootNavigator';
-import { listAllOffers } from '../../requests/fetchRequests';
 import { Offer } from '../../domain/offer';
 import { listOffersStyle } from '../../shared/styles';
+import {ApiRequests} from "../../requests/ApiRequests";
 
 export type ShowSellScreenNavigationProp = CompositeNavigationProp<BottomTabNavigationProp<TabStackParamList>, NativeStackNavigationProp<RootStackParamList, 'ShowSell'>>
 
 const ShowSellOffers = () => {
   const navigation = useNavigation<ShowSellScreenNavigationProp>();
-  const data = listAllOffers();
+
+  const [offers, setOffers] = useState([])
+
+    // FETCHES
+
+    const getAllOffers = async () => {
+      ApiRequests.getAllSellOffers().then((result) => {
+          let offers = result.data
+          setOffers(offers);
+      }).catch((e) => {
+          console.log(e)
+      })
+    }
+
+    useEffect(() => {
+        getAllOffers().then(r => r)
+    })
   
   const renderItem = ({item}:{item:Offer}) => {
     return (
       <TouchableOpacity style={listOffersStyle.offerList} onPress={() => navigation.navigate('ShowSellOffer', {offer: item})}>
-        <Text style={listOffersStyle.offerListElement}>Amount: {item.maxAmount}</Text>
+        <Text style={listOffersStyle.offerListElement}>Amount: {item.amount}</Text>
         <Text style={listOffersStyle.offerListElement}>Price: {item.Price}</Text>
         <Text style={listOffersStyle.offerListElement}>Offerer: {item.Offerer}</Text>
-        <Text style={listOffersStyle.offerListElement}>Effective Date: {item.effectiveDate}</Text>
       </TouchableOpacity>
     );
   };
@@ -29,7 +44,7 @@ const ShowSellOffers = () => {
   return (
     <FlatList
       style={listOffersStyle.offerFlatList}
-      data={data}
+      data={offers}
       renderItem={renderItem}
       keyExtractor={(item) => item.ID}
     />

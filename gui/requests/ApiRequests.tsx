@@ -11,4 +11,14 @@ export class ApiRequests {
         // returns the list of energy assets
         return await axiosConfig.get(`/energy`)
     }
+
+    static getAllSellOffers = async () => {
+        return await axiosConfig.get(`/offers`)
+    }
+
+    // posts
+
+    static createSellOffer = async (amount: string, price: string) => {
+        return await axiosConfig.post(`/offer/${amount}/${price}`)
+    }
 }

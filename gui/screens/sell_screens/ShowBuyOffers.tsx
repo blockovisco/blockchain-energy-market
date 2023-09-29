@@ -1,6 +1,5 @@
 import { View, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
-import { listAllOffers } from '../../requests/fetchRequests'
 import {listOffersStyle} from "../../shared/styles";
 import { CompositeNavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigator/RootNavigator';
@@ -14,12 +13,11 @@ export type ShowBuyScreenNavigationProp = CompositeNavigationProp<BottomTabNavig
 
 const ShowBuyOffers = () => {
   const navigation = useNavigation<ShowBuyScreenNavigationProp>();
-  const data = {};
-  
+
   const renderItem = ({item}:{item:Offer}) => {
     return (
       <TouchableOpacity style={listOffersStyle.offerList} onPress={() => navigation.navigate('ShowSellOffer', {offer: item})}>
-        <Text style={listOffersStyle.offerListElement}>Amount: {item.maxAmount}</Text>
+        <Text style={listOffersStyle.offerListElement}>Amount: {item.amount}</Text>
         <Text style={listOffersStyle.offerListElement}>Price: {item.Price}</Text>
         <Text style={listOffersStyle.offerListElement}>Offerer: {item.Offerer}</Text>
       </TouchableOpacity>
@@ -29,7 +27,7 @@ const ShowBuyOffers = () => {
   return (
     <FlatList
       style={listOffersStyle.offerFlatList}
-      data={data}
+      data={[]}
       renderItem={renderItem}
       keyExtractor={(item) => item.ID}
     />
