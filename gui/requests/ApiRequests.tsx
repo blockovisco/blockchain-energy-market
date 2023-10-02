@@ -21,4 +21,8 @@ export class ApiRequests {
     static createSellOffer = async (amount: string, price: string) => {
         return await axiosConfig.post(`/offer/${amount}/${price}`)
     }
+
+    static executeOffer = async (offerId: string) => {
+        return await axiosConfig.post(`/offer/${offerId}`)
+    }
 }

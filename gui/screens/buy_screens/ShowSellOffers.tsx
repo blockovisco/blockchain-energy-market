@@ -29,7 +29,7 @@ const ShowSellOffers = () => {
 
     useEffect(() => {
         getAllOffers().then(r => r)
-    })
+    }, [])
   
   const renderItem = ({item}:{item:Offer}) => {
     return (
