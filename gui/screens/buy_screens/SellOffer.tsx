@@ -7,10 +7,17 @@ import { Button } from '@rneui/themed'
 import { createOfferStyle } from '../../shared/styles'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {signContract} from "../../requests/contracts";
+import {ApiRequests} from "../../requests/ApiRequests";
 
 type SellOfferRouteProp = RouteProp<RootStackParamList, 'ShowSellOffer'>
 const SellOffer = () => {
   const {params: {offer}} = useRoute<SellOfferRouteProp>()
+
+    const executeOffer = async (offerId: string) => {
+        await ApiRequests.executeOffer(offerId)
+    }
+
+
   return (
     <Container>
       <SafeAreaView>
@@ -19,8 +26,7 @@ const SellOffer = () => {
           <BigText>Name: {offer.Name}</BigText>
           <BigText>Offerer: {offer.Offerer}</BigText>
           <BigText>Price: {offer.Price}</BigText>
-          <BigText>Amount: {offer.maxAmount}</BigText>
-            <BigText>EffectiveDate: {offer.effectiveDate}</BigText>
+          <BigText>Amount: {offer.amount}</BigText>
         </View>
         <View>
           <Button
@@ -29,7 +35,7 @@ const SellOffer = () => {
             titleStyle={createOfferStyle.titleStyle}
             buttonStyle={createOfferStyle.buttonStyle}
             onPress={() => {Alert.alert("Confirmation", "Are you sure?" + offer.ID, [
-              {text: "Yes", onPress: async () => {await signContract(offer.ID)}, style: 'default'},
+              {text: "Yes", onPress: async () => {await executeOffer(offer.ID)}, style: 'default'},
               {text: "No", onPress: () => {}, style: 'cancel'}
           ])}}/>
         </View>

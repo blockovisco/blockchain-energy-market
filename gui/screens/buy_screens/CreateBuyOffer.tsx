@@ -4,7 +4,7 @@ import { Container, SmallText } from '../../shared/shared'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Button, Input } from '@rneui/themed'
 import { colors } from '../../shared/colors'
-import { createBuyOffer } from '../../requests/createRequests'
+import { createSellOffer } from '../../requests/createRequests'
 import {createOfferStyle} from "../../shared/styles";
 
 const CreateBuyOffer = () => {
@@ -36,7 +36,7 @@ const CreateBuyOffer = () => {
               title="Confirm"
               titleStyle={createOfferStyle.titleStyle}
               buttonStyle={createOfferStyle.buttonStyle}
-              onPress={async () => await createBuyOffer(energyToBuy, energyPrice)}/>
+              onPress={async () => await createSellOffer(energyToBuy, energyPrice)}/>
           </View>
       </SafeAreaView>
     </Container>
