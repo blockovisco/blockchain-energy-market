@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import { Text } from "react-native";
 import React from "react";
-import { Colors } from "../../../../../colors";
+import { Colors } from "../../../../colors";
 
 export const DateComponent = ({ children }: PropsWithChildren) => {
   return (

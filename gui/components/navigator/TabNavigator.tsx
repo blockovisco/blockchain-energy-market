@@ -5,7 +5,7 @@ import SellScreen from "../screens/SellScreen";
 import { useNavigation } from "@react-navigation/native";
 import { Icon } from "@rneui/themed";
 import { Colors } from "../../colors";
-import Home from "../screens/Home/Home";
+import Home from "../screens/Home";
 
 export type TabStackParamList = {
   Home: undefined;

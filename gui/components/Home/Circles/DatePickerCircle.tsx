@@ -1,19 +1,19 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { Circle } from "../../../shared/Circle";
-import { sizeOfBigCircle } from "../../../../constants";
-import { Colors } from "../../../../colors";
 import { Icon } from "@rneui/themed";
 import { Platform } from "react-native";
 import DateTimePicker, {
   DateTimePickerEvent,
 } from "@react-native-community/datetimepicker";
+import { Circle } from "../../shared/Circle";
+import { sizeOfBigCircle } from "../../../constants";
+import { Colors } from "../../../colors";
 
 interface DatePickerCircleProps {
   date: Date;
   setDate: Dispatch<SetStateAction<Date>>;
 }
 export const DatePickerCircle = ({ date, setDate }: DatePickerCircleProps) => {
-  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
 
   const onDateChange = (event: DateTimePickerEvent, date?: Date) => {
     if (event.type === "set" && !!date) {

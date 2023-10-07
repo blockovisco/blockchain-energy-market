@@ -1,9 +1,10 @@
 import React from "react";
-import { Circle } from "../../../../shared/Circle";
-import { sizeOfBigCircle } from "../../../../../constants";
-import { Colors } from "../../../../../colors";
-import { RoundedSquare } from "../../../../shared/RoundedSquare";
+
 import { DateComponent } from "./DateComponent";
+import { Circle } from "../../../shared/Circle";
+import { sizeOfBigCircle } from "../../../../constants";
+import { Colors } from "../../../../colors";
+import { RoundedSquare } from "../../../shared/RoundedSquare";
 
 export const DateCircle = ({ date }: { date: Date }) => {
   return (

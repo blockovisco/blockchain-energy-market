@@ -1,11 +1,12 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { Circle } from "../../../../shared/Circle";
-import { Colors } from "../../../../../colors";
-import { Header } from "../../../../shared/Header";
-import { sizeOfBigCircle } from "../../../../../constants";
+
 import { DateCircle } from "../DateCircle/DateCircle";
 import { DatePickerCircle } from "../DatePickerCircle";
 import { MainCircleField } from "./MainCircleField";
+import { Colors } from "../../../../colors";
+import { Circle } from "../../../shared/Circle";
+import { sizeOfBigCircle } from "../../../../constants";
+import { Header } from "../../../shared/Header";
 
 interface MainCircleProps {
   accountBalance: number;

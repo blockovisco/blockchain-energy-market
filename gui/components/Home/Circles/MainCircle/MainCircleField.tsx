@@ -1,9 +1,10 @@
 import React from "react";
-import { SmallText } from "../../../../shared/StyledText";
-import { RoundedField } from "../../../../shared/RoundedField";
-import { sizeOfBigCircle } from "../../../../../constants";
-import { Colors } from "../../../../../colors";
+
 import { Text, View } from "react-native";
+import { SmallText } from "../../../shared/StyledText";
+import { Colors } from "../../../../colors";
+import { sizeOfBigCircle } from "../../../../constants";
+import { RoundedField } from "../../../shared/RoundedField";
 interface MainCircleFieldProps {
   title: string;
   value: string;
