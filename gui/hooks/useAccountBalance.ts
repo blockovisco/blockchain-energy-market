@@ -5,13 +5,17 @@ export const useGetAccountBalance = () => {
   return useQuery({
     queryKey: ["Get Account Balance"],
     queryFn: getAccountBalance,
-    onError: (err) => {
-      console.log(err);
+    onSuccess(data) {
+      console.log("account", data);
     },
   });
 };
 const getAccountBalance = async () => {
-  return await ApiRequests.getAccountBalance().then(
-    (response) => response.data
-  );
+  return await ApiRequests.getAccountBalance()
+    .then((response) => {
+      return response.data;
+    })
+    .catch((e: Error) => {
+      console.log("getAccountBalance", e.message);
+    });
 };
