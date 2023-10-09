@@ -10,6 +10,8 @@ import { Text } from "@rneui/base";
 import { Icon } from '@rneui/themed';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {ApiRequests} from "../requests/ApiRequests";
+import rootNavigator from "../navigator/RootNavigator";
+import tabNavigator from "../navigator/TabNavigator";
 
 
 interface circleProps {
@@ -35,6 +37,7 @@ const Home = () => {
 
     const [accountBalance, setAccountBalance] = useState(0.0)
     const [energyBalance, setEnergyBalance] = useState(0.0)
+    const [refreshing, setRefreshing] = useState(0.0)
 
     // END OF DATA
 
@@ -50,7 +53,7 @@ const Home = () => {
     useEffect(() => {
         getAccountBalance().then(r => r)
         getEnergyBalance().then(r => r)
-    })
+    }, [refreshing])
 
     const getAccountBalance = async () => {
         await ApiRequests.getAccountBalance().then((response) => {
@@ -93,8 +96,8 @@ const Home = () => {
                         </View>
                         <Text style={textStyle({}).smallText}>Bilans dnia:</Text>
                         <View style={styles({size: sizeOfBigCircle*0.7, color: colors.primary}).roundedField}>
-                            <Text style={textStyle({color: 'green'}).colored}>+12 B</Text>
-                            <Text style={textStyle({color: 'red'}).colored}>-12 B</Text>
+                            <Text style={textStyle({color: 'green'}).colored}>+0 B</Text>
+                            <Text style={textStyle({color: 'red'}).colored}>-0 B</Text>
                         </View>
                         <TouchableOpacity onPress={() => setShowDatePicker(true)} style={styles({
                         size: sizeOfBigCircle*0.4, 
@@ -117,19 +120,21 @@ const Home = () => {
                             />
                             )}
                         </TouchableOpacity>
-                        <View style={styles({
+                        <TouchableOpacity style={styles({
                         size: sizeOfBigCircle*0.6, 
                         color: colors.lightblue, 
                         position: 'absolute',
                         top: -sizeOfBigCircle*0.38,
-                        right: -sizeOfBigCircle*0.25}).circle}>
+                        right: -sizeOfBigCircle*0.25}).circle}
+                        onPress={() => {setRefreshing(refreshing + 1)}}
+                        >
                             <View style={styles({
                                 size: sizeOfBigCircle*0.4, 
                                 color: colors.secondary}).roundedSquare}>
                                 <Text style={textStyle({}).date}>{date.getDate().toString().padStart(2, '0')}.{(date.getMonth() + 1).toString().padStart(2, '0')}</Text>
                                 <Text style={textStyle({}).date}>{date.getFullYear()}</Text>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                 </View>
             </SafeAreaView>
         </Container>
