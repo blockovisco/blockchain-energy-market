@@ -1,12 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { SetPriceInput } from "../SetPrices/SetPriceInput";
 import { SetPricesInfo } from "../SetPrices/SetPricesInfo";
 import { Colors } from "../../colors";
+import {
+  useGetMaximumPrice,
+  useSetMaximumPrice,
+} from "../../hooks/useMaximumPrice";
+import {
+  useGetMinimumPrice,
+  useSetMinimumPrice,
+} from "../../hooks/useMinimumPrice";
 
 export const SetPrices = () => {
-  const [maxPriceToPay, setMaxPriceToPay] = useState<string>("0");
-  const [minPriceToSell, setMinPriceToSell] = useState<string>("0");
+  const [maxPriceToPay, setMaxPriceState] = useState<string>("0");
+  const [minPriceToSell, setMinPriceState] = useState<string>("0");
+  const { mutate: setMaxPrice } = useSetMaximumPrice();
+  const { mutate: setMinPrice } = useSetMinimumPrice();
+
+  const { isFetched: isMaxPriceFetched, data: maxPriceData } =
+    useGetMaximumPrice();
+
+  const { isFetched: isMinPriceFetched, data: minPriceData } =
+    useGetMinimumPrice();
+
+  const setMaxPriceHandler = (maxPrice: string) => {
+    setMaxPriceState(maxPrice);
+    setMaxPrice({ maxPrice });
+  };
+
+  const setMinPriceHandler = (minPrice: string) => {
+    setMinPriceState(minPrice);
+    setMinPrice({ minPrice });
+  };
+
+  useEffect(() => {
+    if (isMaxPriceFetched) {
+      setMaxPriceState(maxPriceData);
+    }
+  }, [isMaxPriceFetched, maxPriceData]);
+
+  useEffect(() => {
+    if (isMinPriceFetched) {
+      setMinPriceState(minPriceData);
+    }
+  }, [isMinPriceFetched, minPriceData]);
   return (
     <View
       style={{
@@ -25,13 +63,13 @@ export const SetPrices = () => {
         label="Set maximum price"
         placeholder="Enter price"
         backgroundColor={Colors.Background.PrimaryLight}
-        onChangeHandler={setMaxPriceToPay}
+        onChangeHandler={setMaxPriceHandler}
       />
       <SetPriceInput
         label="Set minimum price"
         placeholder="Enter price"
         backgroundColor={Colors.Background.Primary}
-        onChangeHandler={setMinPriceToSell}
+        onChangeHandler={setMinPriceHandler}
       />
     </View>
   );

@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import { TextStyle, Text, View } from "react-native";
+import React from "react";
+import { TextStyle, Text } from "react-native";
 import { Colors } from "../../colors";
 import { SetPriceCard } from "./SetPriceCard";
 import { SmallText } from "../shared/StyledText";
@@ -39,20 +39,4 @@ const quantityStyle: TextStyle = {
   color: textColor,
   fontWeight: "700",
   fontSize: 24,
-};
-
-const BackCard = ({ children }: { children: ReactNode }) => {
-  return (
-    <View
-      style={{
-        backgroundColor: Colors.Background.Primary,
-        borderRadius: 16,
-        padding: 4,
-        borderWidth: 1,
-        borderColor: Colors.Background.PrimaryDark,
-      }}
-    >
-      {children}
-    </View>
-  );
 };

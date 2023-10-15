@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import { TextInput, TouchableOpacity, View, Text } from "react-native";
 import { Colors } from "../../colors";
 import { SmallText } from "../shared/StyledText";
@@ -8,7 +8,7 @@ interface SetPriceInputProps {
   label: string;
   placeholder?: string;
   backgroundColor?: string;
-  onChangeHandler: Dispatch<SetStateAction<string>>;
+  onChangeHandler: (value: string) => void;
 }
 export const SetPriceInput = ({
   label,
@@ -18,8 +18,9 @@ export const SetPriceInput = ({
 }: SetPriceInputProps) => {
   const [inputValue, setInputValue] = useState<string>("");
 
-  const handleOnChange = (inputValue: string) => {
-    setInputValue(inputValue);
+  const handleSubmit = (submittedValue: string) => {
+    onChangeHandler(submittedValue);
+    setInputValue("");
   };
   return (
     <SetPriceCard backgroundColor={backgroundColor} style={{ gap: 10 }}>
@@ -31,9 +32,9 @@ export const SetPriceInput = ({
         placeholder={placeholder ?? ""}
         keyboardType="numeric"
         value={`${inputValue}`}
-        onChangeText={handleOnChange}
+        onChangeText={setInputValue}
       />
-      <TouchableOpacity onPress={() => onChangeHandler(inputValue)}>
+      <TouchableOpacity onPress={() => handleSubmit(inputValue)}>
         <View
           style={{
             alignItems: "center",

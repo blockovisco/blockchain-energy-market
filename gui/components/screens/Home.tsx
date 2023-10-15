@@ -9,7 +9,7 @@ const Home = () => {
   const [date, setDate] = useState(new Date());
   const [accountBalance, setAccountBalance] = useState<number>(10);
   const [energyBalance, setEnergyBalance] = useState<number>(7);
-  const [dailyBalance] = useState<number>(-7);
+  const [dailyBalance] = useState<number>(1);
 
   const { isFetched: isAccountBalanceFetched, data: accountBalanceData } =
     useGetAccountBalance();
@@ -17,13 +17,13 @@ const Home = () => {
     useGetEnergyBalance();
 
   useEffect(() => {
-    if (isAccountBalanceFetched && !!accountBalanceData) {
+    if (isAccountBalanceFetched) {
       setAccountBalance(accountBalanceData);
     }
   }, [isAccountBalanceFetched, accountBalanceData]);
 
   useEffect(() => {
-    if (isEnergyBalanceFetched && !!energyBalanceData) {
+    if (isEnergyBalanceFetched) {
       setEnergyBalance(energyBalanceData);
     }
   }, [isEnergyBalanceFetched, energyBalanceData]);
