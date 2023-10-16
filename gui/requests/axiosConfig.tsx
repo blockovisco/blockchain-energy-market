@@ -1,13 +1,12 @@
-import axios from 'axios';
-
+import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://192.168.0.104:6060',
-    timeout: 4000,
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json; charset=utf-8'
-    }
+  baseURL: "http://localhost:6060",
+  timeout: 4000,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json; charset=utf-8",
+  },
 });
 
 // Where you would set stuff like your 'Authorization' header, etc ...
