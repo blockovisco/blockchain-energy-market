@@ -1,94 +1,72 @@
-import React, { useLayoutEffect } from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import BuyScreen from "../screens/BuyScreen";
-import SellScreen from "../screens/SellScreen";
-import { useNavigation } from "@react-navigation/native";
+import React from "react";
+import {
+  BottomTabNavigationOptions,
+  createBottomTabNavigator,
+} from "@react-navigation/bottom-tabs";
 import { Icon } from "@rneui/themed";
 import { Colors } from "../../colors";
 import Home from "../screens/Home";
+import { SetPrices } from "../screens/SetPrices";
 
-export type TabStackParamList = {
-  Home: undefined;
-  BuyScreen: undefined;
-  SellScreen: undefined;
-};
-
-const Tab = createBottomTabNavigator<TabStackParamList>();
+const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
-  const navigation = useNavigation();
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
-
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused }) => {
-          if (route.name === "Home") {
+    <Tab.Navigator screenOptions={navigationOptions}>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarLabel: "Home",
+          tabBarIcon: ({ size, color }) => {
             return (
-              <Icon
-                name="home"
-                type="FontAwesome5"
-                color={focused ? Colors.Text.White : Colors.Text.Light}
-                size={35}
-              />
+              <Icon name="home" type="FontAwesome5" size={size} color={color} />
             );
-          } else if (route.name === "BuyScreen") {
+          },
+        }}
+      />
+      <Tab.Screen
+        name="SetPrices"
+        component={SetPrices}
+        options={{
+          tabBarLabel: "Set prices",
+          tabBarIcon: ({ size, color }) => {
             return (
               <Icon
                 name="shopping-cart"
                 type="FontAwesome5"
-                color={focused ? Colors.Text.White : Colors.Text.Light}
-                size={35}
+                size={size}
+                color={color}
               />
             );
-          } else if (route.name === "SellScreen") {
-            return (
-              <Icon
-                name="attach-money"
-                type="MaterialIcons"
-                color={focused ? Colors.Text.White : Colors.Text.Light}
-                size={35}
-              />
-            );
-          }
-        },
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: Colors.Background.Primary,
-          borderTopWidth: 5,
-          borderTopColor: Colors.Background.PrimaryDark,
-        },
-      })}
-    >
-      <Tab.Screen
-        options={{
-          headerShown: true,
-          title: "BLOCKOVISCO",
-          headerTitleAlign: "center",
-          headerStyle: {
-            backgroundColor: Colors.Background.Primary,
-            borderBottomWidth: 5,
-            borderBottomColor: Colors.Background.PrimaryDark,
-            height: 120,
-          },
-          headerTintColor: Colors.Background.White,
-          headerTitleStyle: {
-            fontWeight: "bold",
-            fontSize: 40,
           },
         }}
-        name="Home"
-        component={Home}
       />
-      <Tab.Screen name="BuyScreen" component={BuyScreen} />
-      <Tab.Screen name="SellScreen" component={SellScreen} />
     </Tab.Navigator>
   );
+};
+
+const navigationOptions: BottomTabNavigationOptions = {
+  tabBarActiveTintColor: Colors.Text.White,
+  tabBarInactiveTintColor: Colors.Text.Light,
+  tabBarStyle: {
+    backgroundColor: Colors.Background.Primary,
+    borderTopWidth: 5,
+    borderTopColor: Colors.Background.PrimaryDark,
+  },
+  headerTitle: "BLOCKOVISCO",
+  headerTitleStyle: {
+    color: Colors.Text.White,
+    fontSize: 48,
+    fontWeight: "800",
+  },
+  headerTitleAlign: "center",
+  headerStyle: {
+    height: 120,
+    backgroundColor: Colors.Background.Primary,
+    borderBottomWidth: 5,
+    borderBottomColor: Colors.Background.PrimaryDark,
+  },
 };
 
 export default TabNavigator;

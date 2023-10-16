@@ -1,14 +1,16 @@
 import React, { PropsWithChildren } from "react";
-import { View } from "react-native";
-import { Colors } from "../../colors";
+import { View, ViewStyle } from "react-native";
 
-export const Container = ({ children }: PropsWithChildren) => {
+export const Container = ({
+  children,
+  style,
+}: PropsWithChildren<{ style?: ViewStyle }>) => {
   return (
     <View
       style={{
+        ...style,
         flex: 1,
         alignItems: "center",
-        backgroundColor: Colors.Background.White,
         justifyContent: "center",
       }}
     >

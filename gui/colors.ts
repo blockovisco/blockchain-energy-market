@@ -2,7 +2,7 @@ export const Colors = {
   Text: {
     White: "#fff",
     Primary: "#212121",
-    Light: "#757575",
+    Light: "#868686",
     Green: "#35ff4f",
     Red: "#ff0303",
   },
