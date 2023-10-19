@@ -10,7 +10,8 @@ import { Header } from "../../../shared/Header";
 
 interface MainCircleProps {
   accountBalance: number;
-  energyBalance: number;
+  consumedEnergy: number;
+  producedEnergy: number;
   dailyBalance: number;
   date: Date;
   setDate: Dispatch<SetStateAction<Date>>;
@@ -26,7 +27,8 @@ const getTextColor = (value: number) => {
 
 export const MainCircle = ({
   accountBalance,
-  energyBalance,
+  consumedEnergy,
+  producedEnergy,
   dailyBalance,
   date,
   setDate,
@@ -50,8 +52,8 @@ export const MainCircle = ({
 
       <MainCircleField
         title="Energy balance:"
-        textColor={getTextColor(energyBalance)}
-        value={`${energyBalance} kW`}
+        textColors={[Colors.Text.Green, Colors.Text.Red]}
+        values={[`+${producedEnergy} kW `, `-${consumedEnergy} kW`]}
       ></MainCircleField>
 
       <MainCircleField
