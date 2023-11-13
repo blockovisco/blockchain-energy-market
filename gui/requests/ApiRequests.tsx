@@ -14,9 +14,14 @@ export class ApiRequests {
     return await axiosConfig.get("/minPrice");
   };
 
-  static getEnergyList = async () => {
+  static getConsumedEnergy = async () => {
     // returns the list of energy assets
-    return await axiosConfig.get(`/energy`);
+    return await axiosConfig.get(`/consumedEnergy`);
+  };
+
+  static getProducedEnergy = async () => {
+    // returns the list of energy assets
+    return await axiosConfig.get(`/producedEnergy`);
   };
 
   static getAllSellOffers = async () => {

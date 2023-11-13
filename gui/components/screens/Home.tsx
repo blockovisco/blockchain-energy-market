@@ -1,32 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { useGetAccountBalance } from "../../hooks/useAccountBalance";
-import { useGetEnergyBalance } from "../../hooks/useEnergyBalance";
 import { Container } from "../shared/Container";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MainCircle } from "../Home/Circles/MainCircle/MainCircle";
+import {
+  useGetConsumedEnergy,
+  useGetProducedEnergy,
+} from "../../hooks/useEnergyBalance";
 
 const Home = () => {
   const [date, setDate] = useState(new Date());
   const [accountBalance, setAccountBalance] = useState<number>(10);
-  const [energyBalance, setEnergyBalance] = useState<number>(7);
-  const [dailyBalance] = useState<number>(1);
+  const [consumedEnergy, setConsumedEnergy] = useState<number>(3);
+  const [producedEnergy, setProducedEnergy] = useState<number>(5);
 
   const { isFetched: isAccountBalanceFetched, data: accountBalanceData } =
     useGetAccountBalance();
-  const { isFetched: isEnergyBalanceFetched, data: energyBalanceData } =
-    useGetEnergyBalance();
+  const { isFetched: isConsumedEnergyFetched, data: consumedEnergyData } =
+    useGetConsumedEnergy();
+
+  const { isFetched: isProducedEnergyFetched, data: producedEnergyData } =
+    useGetProducedEnergy();
 
   useEffect(() => {
-    if (isAccountBalanceFetched) {
+    if (isAccountBalanceFetched && !!accountBalanceData) {
       setAccountBalance(accountBalanceData);
     }
   }, [isAccountBalanceFetched, accountBalanceData]);
 
   useEffect(() => {
-    if (isEnergyBalanceFetched) {
-      setEnergyBalance(energyBalanceData);
+    if (isConsumedEnergyFetched && !!consumedEnergyData) {
+      console.log(consumedEnergyData);
+      setConsumedEnergy(consumedEnergyData);
     }
-  }, [isEnergyBalanceFetched, energyBalanceData]);
+  }, [isConsumedEnergyFetched, consumedEnergyData]);
+
+  useEffect(() => {
+    if (isProducedEnergyFetched && !!producedEnergyData) {
+      console.log(producedEnergyData);
+
+      setProducedEnergy(producedEnergyData);
+    }
+  }, [isProducedEnergyFetched, producedEnergyData]);
 
   return (
     <Container>
@@ -35,8 +50,8 @@ const Home = () => {
           date={date}
           setDate={setDate}
           accountBalance={accountBalance}
-          energyBalance={energyBalance}
-          dailyBalance={dailyBalance}
+          consumedEnergy={consumedEnergy}
+          producedEnergy={producedEnergy}
         />
       </SafeAreaView>
     </Container>

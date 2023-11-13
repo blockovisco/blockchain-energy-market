@@ -7,14 +7,18 @@ import { sizeOfBigCircle } from "../../../../constants";
 import { RoundedField } from "../../../shared/RoundedField";
 interface MainCircleFieldProps {
   title: string;
-  value: string;
-  textColor: string;
+  value?: string;
+  values?: string[];
+  textColor?: string;
+  textColors?: string[];
 }
 
 export const MainCircleField = ({
   title,
   value,
   textColor,
+  values,
+  textColors,
 }: MainCircleFieldProps) => {
   return (
     <View style={{ paddingBottom: 2 }}>
@@ -28,7 +32,16 @@ export const MainCircleField = ({
         size={sizeOfBigCircle * 0.7}
         backgroundColor={Colors.Background.PrimaryDark}
       >
-        <Text style={{ color: textColor, marginLeft: 10 }}>{value}</Text>
+        {!!value && (
+          <Text style={{ color: textColor, marginLeft: 10 }}>{value}</Text>
+        )}
+        {!!values &&
+          values.length > 0 &&
+          values.map((value, i) => (
+            <Text key={i} style={{ color: textColors?.[i], marginLeft: 10 }}>
+              {value}
+            </Text>
+          ))}
       </RoundedField>
     </View>
   );

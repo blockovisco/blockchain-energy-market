@@ -1,28 +1,42 @@
 import { useQuery } from "@tanstack/react-query";
 import { ApiRequests } from "../requests/ApiRequests";
 
-export const useGetEnergyBalance = () => {
+export const useGetConsumedEnergy = () => {
   return useQuery({
-    queryKey: ["Get energy balance"],
-    queryFn: getEnergyBalance,
+    queryKey: ["Get consumed energy"],
+    queryFn: getConsumedEnergy,
     onSuccess(data) {
-      console.log("energy", data);
+      console.log("consumed energy", data);
     },
   });
 };
 
-const getEnergyBalance = async () => {
-  return await ApiRequests.getEnergyList()
+const getConsumedEnergy = async () => {
+  return await ApiRequests.getConsumedEnergy()
     .then((response) => {
-      const energyList = response.data;
-      if (energyList.length != 1) {
-        console.log(
-          "Warning! Energy assets list length is not equal to 1! Fetched value is probably wrong"
-        );
-      }
-      return energyList[0].Amount;
+      return response.data.consumedEnergy;
     })
     .catch((e: Error) => {
-      console.log("getEnergyBalance", e.message);
+      console.log("getConsumedEnergy", e.message);
+    });
+};
+
+export const useGetProducedEnergy = () => {
+  return useQuery({
+    queryKey: ["Get produced energy"],
+    queryFn: getProducedEnergy,
+    onSuccess(data) {
+      console.log("produced energy", data);
+    },
+  });
+};
+
+const getProducedEnergy = async () => {
+  return await ApiRequests.getProducedEnergy()
+    .then((response) => {
+      return response.data.producedEnergy;
+    })
+    .catch((e: Error) => {
+      console.log("getProducedEnergy", e.message);
     });
 };

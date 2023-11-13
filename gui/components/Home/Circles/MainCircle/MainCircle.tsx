@@ -10,24 +10,16 @@ import { Header } from "../../../shared/Header";
 
 interface MainCircleProps {
   accountBalance: number;
-  energyBalance: number;
-  dailyBalance: number;
+  consumedEnergy: number;
+  producedEnergy: number;
   date: Date;
   setDate: Dispatch<SetStateAction<Date>>;
 }
 
-const getTextColor = (value: number) => {
-  return value > 0
-    ? Colors.Text.Green
-    : value === 0
-    ? Colors.Text.White
-    : Colors.Text.Red;
-};
-
 export const MainCircle = ({
   accountBalance,
-  energyBalance,
-  dailyBalance,
+  consumedEnergy,
+  producedEnergy,
   date,
   setDate,
 }: MainCircleProps) => {
@@ -46,19 +38,19 @@ export const MainCircle = ({
         title="Account balance:"
         textColor={Colors.Text.White}
         value={`${accountBalance} B`}
-      ></MainCircleField>
+      />
 
       <MainCircleField
-        title="Energy balance:"
-        textColor={getTextColor(energyBalance)}
-        value={`${energyBalance} kW`}
-      ></MainCircleField>
+        title="Energy produced:"
+        textColor={Colors.Text.Green}
+        value={`+${producedEnergy} kW `}
+      />
 
       <MainCircleField
-        title="Daily balance:"
-        textColor={getTextColor(dailyBalance)}
-        value={`${dailyBalance > 0 ? "+" : ""} ${dailyBalance} B`}
-      ></MainCircleField>
+        title="Energy consumed:"
+        textColor={Colors.Text.Red}
+        value={`${consumedEnergy > 0 ? "-" : ""}${consumedEnergy} kW`}
+      />
 
       <DatePickerCircle date={date} setDate={setDate} />
       <DateCircle date={date} />

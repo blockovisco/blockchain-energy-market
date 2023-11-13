@@ -33,7 +33,7 @@ const TabNavigator = () => {
           tabBarIcon: ({ size, color }) => {
             return (
               <Icon
-                name="shopping-cart"
+                name="settings"
                 type="FontAwesome5"
                 size={size}
                 color={color}
@@ -53,6 +53,10 @@ const navigationOptions: BottomTabNavigationOptions = {
     backgroundColor: Colors.Background.Primary,
     borderTopWidth: 5,
     borderTopColor: Colors.Background.PrimaryDark,
+  },
+  tabBarLabelStyle: {
+    fontSize: 15,
+    fontWeight: "600",
   },
   headerTitle: "BLOCKOVISCO",
   headerTitleStyle: {
