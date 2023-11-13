@@ -29,7 +29,7 @@ export const SmallText = ({
   style?: TextStyle;
 }>) => {
   return (
-    <StyledText fontSize={16} color={color} style={style}>
+    <StyledText fontSize={18} color={color} style={style}>
       {children}
     </StyledText>
   );

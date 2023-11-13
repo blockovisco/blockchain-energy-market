@@ -13,8 +13,8 @@ import {
 } from "../../hooks/useMinimumPrice";
 
 export const SetPrices = () => {
-  const [maxPriceToPay, setMaxPriceState] = useState<string>("0");
-  const [minPriceToSell, setMinPriceState] = useState<string>("0");
+  const [maxPriceToPay, setMaxPriceState] = useState<string>("10");
+  const [minPriceToSell, setMinPriceState] = useState<string>("11");
   const { mutate: setMaxPrice } = useSetMaximumPrice();
   const { mutate: setMinPrice } = useSetMinimumPrice();
 
@@ -35,13 +35,13 @@ export const SetPrices = () => {
   };
 
   useEffect(() => {
-    if (isMaxPriceFetched) {
+    if (isMaxPriceFetched && !!maxPriceData) {
       setMaxPriceState(maxPriceData);
     }
   }, [isMaxPriceFetched, maxPriceData]);
 
   useEffect(() => {
-    if (isMinPriceFetched) {
+    if (isMinPriceFetched && !!minPriceData) {
       setMinPriceState(minPriceData);
     }
   }, [isMinPriceFetched, minPriceData]);

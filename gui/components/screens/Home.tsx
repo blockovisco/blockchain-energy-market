@@ -11,9 +11,8 @@ import {
 const Home = () => {
   const [date, setDate] = useState(new Date());
   const [accountBalance, setAccountBalance] = useState<number>(10);
-  const [consumedEnergy, setConsumedEnergy] = useState<number>(7);
-  const [producedEnergy, setProducedEnergy] = useState<number>(0);
-  const [dailyBalance] = useState<number>(1);
+  const [consumedEnergy, setConsumedEnergy] = useState<number>(3);
+  const [producedEnergy, setProducedEnergy] = useState<number>(5);
 
   const { isFetched: isAccountBalanceFetched, data: accountBalanceData } =
     useGetAccountBalance();
@@ -24,19 +23,22 @@ const Home = () => {
     useGetProducedEnergy();
 
   useEffect(() => {
-    if (isAccountBalanceFetched) {
+    if (isAccountBalanceFetched && !!accountBalanceData) {
       setAccountBalance(accountBalanceData);
     }
   }, [isAccountBalanceFetched, accountBalanceData]);
 
   useEffect(() => {
-    if (isConsumedEnergyFetched) {
+    if (isConsumedEnergyFetched && !!consumedEnergyData) {
+      console.log(consumedEnergyData);
       setConsumedEnergy(consumedEnergyData);
     }
   }, [isConsumedEnergyFetched, consumedEnergyData]);
 
   useEffect(() => {
-    if (isProducedEnergyFetched) {
+    if (isProducedEnergyFetched && !!producedEnergyData) {
+      console.log(producedEnergyData);
+
       setProducedEnergy(producedEnergyData);
     }
   }, [isProducedEnergyFetched, producedEnergyData]);
@@ -50,7 +52,6 @@ const Home = () => {
           accountBalance={accountBalance}
           consumedEnergy={consumedEnergy}
           producedEnergy={producedEnergy}
-          dailyBalance={dailyBalance}
         />
       </SafeAreaView>
     </Container>
