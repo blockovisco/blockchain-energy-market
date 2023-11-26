@@ -15,12 +15,12 @@ export const SetPricesInfo = ({
   return (
     <SetPriceCard backgroundColor={Colors.Background.White}>
       <SmallText color={textColor} style={labelStyle}>
-        Maximal price to pay for 1kw:
+        Maximal price to pay for 1kWh:
       </SmallText>
       <Text style={quantityStyle}>{`${maxPriceToPay} B`}</Text>
 
       <SmallText color={textColor} style={labelStyle}>
-        Minimal price to sell 1kW:
+        Minimal price to sell 1kWh:
       </SmallText>
       <Text style={quantityStyle}>{`${minPriceToSell} B`}</Text>
     </SetPriceCard>

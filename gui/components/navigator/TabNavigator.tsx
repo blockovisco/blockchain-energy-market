@@ -5,8 +5,8 @@ import {
 } from "@react-navigation/bottom-tabs";
 import { Icon } from "@rneui/themed";
 import { Colors } from "../../colors";
-import Home from "../screens/Home";
-import { SetPrices } from "../screens/SetPrices";
+import Home from "../Screens/Home";
+import { SetPrices } from "../Screens/SetPrices";
 
 const Tab = createBottomTabNavigator();
 

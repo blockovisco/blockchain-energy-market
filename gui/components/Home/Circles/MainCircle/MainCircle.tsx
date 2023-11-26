@@ -43,13 +43,13 @@ export const MainCircle = ({
       <MainCircleField
         title="Energy produced:"
         textColor={Colors.Text.Green}
-        value={`+${producedEnergy} kW `}
+        value={`+${producedEnergy} kWh `}
       />
 
       <MainCircleField
         title="Energy consumed:"
         textColor={Colors.Text.Red}
-        value={`${consumedEnergy > 0 ? "-" : ""}${consumedEnergy} kW`}
+        value={`${consumedEnergy > 0 ? "-" : ""}${consumedEnergy} kWh`}
       />
 
       <DatePickerCircle date={date} setDate={setDate} />
